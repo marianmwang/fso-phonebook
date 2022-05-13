@@ -47,6 +47,10 @@ let persons = [
   },
 ];
 
+app.get("/", (req, res) => {
+  res.status(404).end()
+})
+
 app.get("/api/persons", (request, response) => {
   response.json(persons);
 });
