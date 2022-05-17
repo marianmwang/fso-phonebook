@@ -16,7 +16,7 @@ app.use(
 
 const requestLogger = (request, response, next) => {
   console.log("Method:", request.method);
-  console.log("Path:  ", request.path); 
+  console.log("Path:  ", request.path);
   console.log("Body:  ", request.body);
   console.log("---");
   next();
@@ -48,8 +48,8 @@ let persons = [
 ];
 
 app.get("/", (req, res) => {
-  res.status(404).end()
-})
+  res.status(404).end();
+});
 
 app.get("/api/persons", (request, response) => {
   response.json(persons);
@@ -116,5 +116,5 @@ app.use(unknownEndpoint);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`part 3 exercises server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
