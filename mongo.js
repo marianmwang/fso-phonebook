@@ -21,14 +21,14 @@ const personSchema = new mongoose.Schema({
 const Person = mongoose.model("Person", personSchema);
 
 // Add new person to DB
-if (process.argv.length == 5) {
+if (process.argv.length === 5) {
   const person = new Person({
     id: Math.floor(Math.random() * 10000),
     name: process.argv[3],
     number: process.argv[4],
   });
 
-  person.save().then((res) => {
+  person.save().then(() => {
     console.log(
       `Added ${process.argv[3]} with number ${process.argv[4]} to the phonebook`
     );
@@ -36,9 +36,8 @@ if (process.argv.length == 5) {
   });
 }
 
-if (process.argv.length == 3) {
+if (process.argv.length === 3) {
   Person.find({}).then((res) => {
-    console.log("Phonebook:")
     res.forEach((person) => {
       console.log(`${person.name} ${person.number}`);
     });
