@@ -15,19 +15,22 @@ const App = () => {
     personService.getPersons().then((allPersons) => setPersons(allPersons));
   }, []);
 
-  const handleClick = (id) => {
-    if (window.confirm("Delete?")) {
-      personService.deletePerson(id);
-      setPersons(persons.filter((x) => x.id !== id));
-    }
-  };
-
   const handleError = (errorMsg, errorType) => {
     setErrorMessage(errorMsg);
     setErrorType(errorType);
     setTimeout(() => {
       setErrorMessage(null);
     }, 4000);
+  };
+
+  const handleClick = (id) => {
+    if (window.confirm("Delete?")) {
+      const person = persons.filter((x) => x.id === id)[0];
+      console.log(person);
+      personService.deletePerson(id);
+      handleError(`Successfully deleted ${person.name} from the phonebook.`);
+      setPersons(persons.filter((x) => x.id !== id));
+    }
   };
 
   function filterFunction() {
