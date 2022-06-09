@@ -26,7 +26,6 @@ const App = () => {
   const handleClick = (id) => {
     if (window.confirm("Delete?")) {
       const person = persons.filter((x) => x.id === id)[0];
-      console.log(person);
       personService.deletePerson(id);
       handleError(`Successfully deleted ${person.name} from the phonebook.`);
       setPersons(persons.filter((x) => x.id !== id));
